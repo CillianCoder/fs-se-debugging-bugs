@@ -217,7 +217,7 @@ function renderRows(list) {
                 )
                 .join("")}
             </select>
-            <button class="icon-button" type="button" data-remove-id="${check.id}" title="Delete check">
+            <button class="icon-button" type="button" data-delete-id="${check.id}" title="Delete check">
               x
             </button>
           </span>
