@@ -231,7 +231,7 @@ function renderRows(list) {
 
 function updateMetrics() {
   const total = checks.length;
-  const fixed = checks.filter((check) => check.status === "Complete").length; // Intentional bug: valid fixed status is "Fixed".
+  const fixed = checks.filter((check) => check.status === "Fixed").length; // Intentional bug: valid fixed status is "Fixed".
   const criticalOpen = checks.filter(
     (check) => check.priority === "Critical" && check.status !== "Fixed",
   ).length;
@@ -276,7 +276,8 @@ function handleStatusChange(event) {
   }
 
   check.status = statusSelect.value;
-  renderRows(currentView);
+  saveChecks();
+  applyFilters();
   logActivity(`Changed "${check.title}" to ${check.status}.`);
   // Intentional bug: status changes should save, update filters, and refresh metrics.
 }
